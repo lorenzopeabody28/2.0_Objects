@@ -54,6 +54,8 @@ public class BasicGameApp implements Runnable {
 	}
 
 
+    //todo: make astro and astro 2 go in different directions
+
    // Constructor Method
    // This has the same name as the class
    // This section is the setup portion of the program
@@ -65,9 +67,12 @@ public class BasicGameApp implements Runnable {
       //variable and objects
       //create (construct) the objects needed for the game and load up 
 		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png"); //load the picture
-		astro = new Astronaut(10,100);
-        //astro2 = new Astronaut(10, 50);
-
+		astro = new Astronaut(200,100);
+        astro.dx = 5;
+        astro2 = new Astronaut(500,500);
+        astro2.dx = 2;
+        astro2.height = 100;
+        astro2.width = 100;
 
 	}// BasicGameApp()
 
@@ -95,6 +100,7 @@ public class BasicGameApp implements Runnable {
 	{
       //calls the move( ) code in the objects
 		astro.move();
+        astro2.move();
 
 	}
 	
@@ -147,7 +153,7 @@ public class BasicGameApp implements Runnable {
 
       //draw the image of the astronaut
 		g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
-
+        g.drawImage(astroPic, astro2.xpos, astro2.xpos, astro2.width, astro2.height, null);
         //end of drawing things
 		g.dispose();
 
