@@ -22,8 +22,8 @@ public class Asteroid {
     public Asteroid(int pXpos, int pYpos) {
         xpos = pXpos;
         ypos = pYpos;
-        dx = 5;
-        dy = 0;
+        dx = 2;
+        dy = 4;
         width = 160;
         height = 160;
         isAlive = true;

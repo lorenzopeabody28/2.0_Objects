@@ -47,6 +47,7 @@ public class BasicGameApp implements Runnable {
 	private Astronaut astro;
     public Astronaut astro2;
     public Asteroid asteroid1;
+    public Asteroid asteroid2;
     //make a new object of Astronaut called astro2
 
    // Main method definition
@@ -104,7 +105,7 @@ public class BasicGameApp implements Runnable {
         astro2.width = 100;
 
         asteroid1 = new Asteroid(467, randy);
-
+        asteroid2 = new Asteroid(randx, 267);
 	}// BasicGameApp()
 
    
@@ -133,6 +134,7 @@ public class BasicGameApp implements Runnable {
 		astro.move();
         astro2.move();
         asteroid1.move();
+        asteroid2.move();
 
 	}
 	
@@ -187,6 +189,7 @@ public class BasicGameApp implements Runnable {
 		g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
         g.drawImage(astroPic, astro2.xpos, astro2.ypos, astro2.width, astro2.height, null);
         g.drawImage(AsteriodPic, asteroid1.xpos, asteroid1.ypos, asteroid1.width, asteroid1.height, null);
+        g.drawImage(AsteriodPic, asteroid2.xpos, asteroid2.ypos, asteroid2.width, asteroid2.height, null);
         //end of drawing things
 		g.dispose();
 
