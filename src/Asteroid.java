@@ -1,3 +1,5 @@
+import java.awt.*;
+
 public class Asteroid {
     //VARIABLE DECLARATION SECTION
     //Here's where you state which variables you are going to use.
@@ -35,6 +37,18 @@ public class Asteroid {
 
         if (ypos > 700){ // wrap when hit the bootom wall
             ypos = 0;
+        }
+        if (ypos < 0) { //wrap when hit the top wall
+            ypos = 700;
+        }
+        if (xpos > 1000) { //wrap when hit the right wall
+            xpos = 0;
+        }
+        if (xpos < 0){  // wrap when hit left wall
+            xpos = 1000;
+        }
+        if (){ // wrap when hit the bootom wall
+            dy = -dy;
         }
         if (ypos < 0) { //wrap when hit the top wall
             ypos = 700;
