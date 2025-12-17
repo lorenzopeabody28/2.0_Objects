@@ -40,6 +40,7 @@ public class BasicGameApp implements Runnable {
 	public BufferStrategy bufferStrategy;
 	public Image astroPic;
     public Image AsteriodPic;
+    public Image backgroundPic;
 
 
    //Declare the objects used in the program
@@ -96,6 +97,7 @@ public class BasicGameApp implements Runnable {
       //create (construct) the objects needed for the game and load up 
 		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png");//load the picture
         AsteriodPic = Toolkit.getDefaultToolkit().getImage("Asteroid.jpeg");
+        backgroundPic = Toolkit.getDefaultToolkit().getImage("Starbackground.jpg");
 
 		astro = new Astronaut(200,100);
         astro.dx = 7;
@@ -105,6 +107,7 @@ public class BasicGameApp implements Runnable {
         astro2.width = 100;
 
         asteroid1 = new Asteroid(467, randy);
+        asteroid1.dx = - asteroid1.dx;
         asteroid2 = new Asteroid(randx, 267);
 	}// BasicGameApp()
 
@@ -137,20 +140,24 @@ public class BasicGameApp implements Runnable {
         asteroid2.move();
         crashing();
 	}
-    public void crashing (){
+    public void crashing () {
         // if the astros crash into eachother
         if (astro.hitbox.intersects(astro2.hitbox)) {
             System.out.println("Crash!!");
-            astro.dx = - astro.dx;
-            astro2.dx = - astro2.dx;
-            astro.dy = - astro.dy;
-            astro2.dy = - astro2.dy;
+            astro.dx = -astro.dx;
+            astro2.dx = -astro2.dx;
+            astro.dy = -astro.dy;
+            astro2.dy = -astro2.dy;
             astro2.isAlive = false;
-
-
-
         }
-
+        if (asteroid1.hitbox.intersects(asteroid2.hitbox) && asteroid2.isCrashing == false) {
+            System.out.println("Asteroid Collision");
+            asteroid2.height = asteroid2.height + 10;
+            asteroid2.isCrashing = true;
+        }
+        if (!asteroid1.hitbox.intersects(asteroid2.hitbox)) {
+            asteroid2.isCrashing = false;
+        }
     }
 	
    //Pauses or sleeps the computer for the amount specified in milliseconds
@@ -199,6 +206,7 @@ public class BasicGameApp implements Runnable {
 		Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
 		g.clearRect(0, 0, WIDTH, HEIGHT);
         //start of drawing things
+        g.drawImage(backgroundPic, 0, 0, WIDTH, HEIGHT, null);
 
       //draw the image of the astronaut
         if (astro2.isAlive == true) {

@@ -11,7 +11,8 @@ public class Asteroid {
     public int width;
     public int height;
     public boolean isAlive;            //a boolean to denote if the hero is alive or dead.
-
+    public Rectangle hitbox;
+    public boolean isCrashing;
 
     // METHOD DEFINITION SECTION
 
@@ -29,6 +30,8 @@ public class Asteroid {
         width = 160;
         height = 160;
         isAlive = true;
+        hitbox = new Rectangle(xpos, ypos, width, height);
+        isCrashing = false;
 
     } // constructor
 
@@ -44,27 +47,17 @@ public class Asteroid {
         if (xpos > 1000) { //wrap when hit the right wall
             xpos = 0;
         }
-        if (xpos < 0){  // wrap when hit left wall
-            xpos = 1000;
-        }
-        if (){ // wrap when hit the bootom wall
-            dy = -dy;
-        }
-        if (ypos < 0) { //wrap when hit the top wall
-            ypos = 700;
-        }
-        if (xpos > 1000) { //wrap when hit the right wall
-            xpos = 0;
-        }
-        if (xpos < 0){  // wrap when hit left wall
+        if (xpos < 0) {  // wrap when hit left wall
             xpos = 1000;
         }
 
         xpos = xpos + dx;
         ypos = ypos + dy;
-
+        hitbox = new Rectangle(xpos, ypos, width, height);
 
         //todo: bounce off all walls
 
-    }
+
+}
+
 }
