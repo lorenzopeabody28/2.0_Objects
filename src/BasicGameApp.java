@@ -215,7 +215,7 @@ public class BasicGameApp implements Runnable {
         g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
         g.drawImage(AsteriodPic, asteroid1.xpos, asteroid1.ypos, asteroid1.width, asteroid1.height, null);
         g.drawImage(AsteriodPic, asteroid2.xpos, asteroid2.ypos, asteroid2.width, asteroid2.height, null);
-        //g.drawRect(astro.hitbox.x, astro.hitbox.y, astro.hitbox.width, astro.hitbox.height);
+        //g.drawRect(astro.hitbox`````.x, astro.hitbox.y, astro.hitbox.width, astro.hitbox.height);
         //end of drawing things
 		g.dispose();
 
