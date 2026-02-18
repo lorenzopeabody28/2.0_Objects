@@ -16,7 +16,10 @@ public class Astronaut {
     public int height;
     public boolean isAlive;            //a boolean to denote if the hero is alive or dead.
     public Rectangle hitbox;
-
+    public boolean isNorth;
+    public boolean isEast;
+    public boolean isWest;
+    public boolean isSouth;
 
     // METHOD DEFINITION SECTION
 
@@ -35,11 +38,41 @@ public class Astronaut {
         height = 60;
         isAlive = true;
         hitbox = new Rectangle(xpos, ypos, width, height);
+        isNorth = false;
+        isEast = false;
+        isWest = false;
+        isSouth = false;
  
     } // constructor
 
     //The move method.  Everytime this is run (or "called") the hero's x position and y position change by dx and dy
     public void move() {
+
+        if(isNorth == true && isSouth == true) {
+            dy = -2;
+        }
+        if (isNorth == false && isSouth == false){
+            dy = 0;
+        }
+        if (isEast == true && isWest == true){
+            dx = -2;
+        }
+        if (isEast == false && isWest == true){
+            dx = 0;
+        }
+        if (isWest == true && isEast == true){
+            dx = 2;
+        }
+        if (isWest == false && isEast == false){
+            dx = 0;
+        }
+        if (isSouth == true && isNorth == true){
+            dy = 2;
+        }
+        if (isSouth == false && isNorth == false){
+            dy = 0;
+        }
+
         if (xpos < 0) { //bounce off the left wall
         dx = -dx;
         }
