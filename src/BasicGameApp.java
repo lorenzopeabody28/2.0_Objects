@@ -242,20 +242,23 @@ public class BasicGameApp implements Runnable, KeyListener {
 
         if (e.getKeyCode() == 38) { //up arrow
             System.out.println("Going Up");
-            astro.dy = -Math.abs(astro.dy);
+            //astro.dy = -Math.abs(astro.dy);
             astro.isNorth = true;
         }
         if (e.getKeyCode() == 37) { //left arrow
             System.out.println("Going Left");
-            astro.dx = -Math.abs(astro.dy);
+            //astro.dx = -Math.abs(astro.dy);
+            astro.isEast = true;
         }
         if (e.getKeyCode() == 39) { //right arrow
             System.out.println("Going Right");
-            astro.dx = Math.abs(astro.dy);
+            //astro.dx = Math.abs(astro.dy);
+            astro.isWest = true;
         }
         if (e.getKeyCode() == 40) { //down arrow
             System.out.println("Going Down");
-            astro.dy = Math.abs(astro.dy);
+            //astro.dy = Math.abs(astro.dy);
+            astro.isSouth = true;
         }
 
     }

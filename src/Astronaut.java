@@ -48,25 +48,25 @@ public class Astronaut {
     //The move method.  Everytime this is run (or "called") the hero's x position and y position change by dx and dy
     public void move() {
 
-        if(isNorth == true && isSouth == true) {
+        if(isNorth == true && isSouth == false) {
             dy = -2;
         }
-        if (isNorth == false && isSouth == false){
+        if (isNorth == true && isSouth == true){
             dy = 0;
         }
-        if (isEast == true && isWest == true){
+        if (isEast == true && isWest == false){
             dx = -2;
         }
-        if (isEast == false && isWest == true){
+        if (isEast == true && isWest == true){
             dx = 0;
         }
-        if (isWest == true && isEast == true){
+        if (isWest == true && isEast == false){
             dx = 2;
         }
         if (isWest == false && isEast == false){
             dx = 0;
         }
-        if (isSouth == true && isNorth == true){
+        if (isSouth == true && isNorth == false){
             dy = 2;
         }
         if (isSouth == false && isNorth == false){
