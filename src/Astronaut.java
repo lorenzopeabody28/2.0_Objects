@@ -16,6 +16,7 @@ public class Astronaut {
     public int height;
     public boolean isAlive;            //a boolean to denote if the hero is alive or dead.
     public Rectangle hitbox;
+    public boolean isControlable;
     public boolean isNorth;
     public boolean isEast;
     public boolean isWest;
@@ -38,6 +39,7 @@ public class Astronaut {
         height = 60;
         isAlive = true;
         hitbox = new Rectangle(xpos, ypos, width, height);
+        isControlable = false;
         isNorth = false;
         isEast = false;
         isWest = false;
@@ -49,25 +51,25 @@ public class Astronaut {
     public void move() {
 
         if(isNorth == true && isSouth == false) {
-            dy = -2;
+            dy = -4;
         }
         if (isNorth == true && isSouth == true){
             dy = 0;
         }
         if (isEast == true && isWest == false){
-            dx = -2;
+            dx = -4;
         }
         if (isEast == true && isWest == true){
             dx = 0;
         }
         if (isWest == true && isEast == false){
-            dx = 2;
+            dx = 4;
         }
         if (isWest == false && isEast == false){
             dx = 0;
         }
         if (isSouth == true && isNorth == false){
-            dy = 2;
+            dy = 4;
         }
         if (isSouth == false && isNorth == false){
             dy = 0;
