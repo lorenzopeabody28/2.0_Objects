@@ -56,6 +56,7 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
     public Rectangle startHitbox;
     public boolean startGame;
     //make a new object of Astronaut called astro2
+    public Asteroid[] asteroids;
 
     // Main method definition
     // This is the code that runs first and automatically
@@ -116,6 +117,14 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
         asteroid2 = new Asteroid(randx, 267);
 
         startHitbox = new Rectangle(100,100,100, 100);
+        startGame = false;
+
+        asteroids = new Asteroid[5];
+        for(int w = 0; w < asteroids.length; w++){
+            int randw = (int) (Math.random() * 700) + 1;
+            int randv = (int) (Math.random() * 1000) + 1;
+            asteroids[w] = new Asteroid(randv, randw);
+        }
     }// BasicGameApp()
 
 
@@ -146,6 +155,10 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
             asteroid1.move();
             asteroid2.move();
             crashing();
+            //todo: make the asteroids in asteroids move
+            for(int c = 0; c < asteroids.length; c++){
+                asteroids[c].move();
+            }
         }
     }
 
@@ -220,7 +233,7 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
     //paints things on the screen using bufferStrategy
     private void render() {
         Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
-        if (startGame == true){
+        if (startGame == true) {
             g.clearRect(0, 0, WIDTH, HEIGHT);
             //start of drawing things
             g.drawImage(backgroundPic, 0, 0, WIDTH, HEIGHT, null);
@@ -236,6 +249,10 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
             if (asteroid2.isAlive == true) {
                 g.drawImage(AsteriodPic, asteroid2.xpos, asteroid2.ypos, asteroid2.width, asteroid2.height, null);
             }
+            for (int b = 0; b < asteroids.length; b++){
+                g.drawImage(AsteriodPic, asteroids[b].xpos, asteroids[b].ypos, asteroids[b].width, asteroids[b].height, null);
+        }
+
             //g.drawRect(astro.hitbox`````.x, astro.hitbox.y, astro.hitbox.width, astro.hitbox.height);
             //end of drawing things
             g.dispose();
