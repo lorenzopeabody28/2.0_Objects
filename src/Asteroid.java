@@ -25,8 +25,22 @@ public class Asteroid {
     public Asteroid(int pXpos, int pYpos) {
         xpos = pXpos;
         ypos = pYpos;
-        dx = 2;
-        dy = 4;
+        int randw = (int) (Math.random() * 10) + 1;
+        int randv = (int) (Math.random() * 10) + 1;
+        int rand1 = (int) (Math.random() * 2) + 1;
+        if (rand1 == 1) {
+        dx = -randw;
+        }
+        else  {
+        dx = randw;
+        }
+        int rand2 = (int) (Math.random() * 2) + 1;
+        if (rand2 == 1) {
+        dy = -randv;
+        }
+        else {
+            dy = randv;
+        }
         width = 160;
         height = 160;
         isAlive = true;

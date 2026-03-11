@@ -249,9 +249,12 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
             if (asteroid2.isAlive == true) {
                 g.drawImage(AsteriodPic, asteroid2.xpos, asteroid2.ypos, asteroid2.width, asteroid2.height, null);
             }
-            for (int b = 0; b < asteroids.length; b++){
-                g.drawImage(AsteriodPic, asteroids[b].xpos, asteroids[b].ypos, asteroids[b].width, asteroids[b].height, null);
-        }
+
+            for (int b = 0; b < asteroids.length; b++) {
+                if (asteroids[b].isAlive == true) {
+                    g.drawImage(AsteriodPic, asteroids[b].xpos, asteroids[b].ypos, asteroids[b].width, asteroids[b].height, null);
+                }
+            }
 
             //g.drawRect(astro.hitbox`````.x, astro.hitbox.y, astro.hitbox.width, astro.hitbox.height);
             //end of drawing things
@@ -334,21 +337,30 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
     @Override
     public void mousePressed(MouseEvent e) {
         System.out.println(e.getPoint());
-        Rectangle pointHitbox = new Rectangle(e.getX(), e.getY(),1, 1);
-        if(pointHitbox.intersects(pointHitbox)){
+        Rectangle pointHitbox = new Rectangle(e.getX(), e.getY(), 1, 1);
+        if (pointHitbox.intersects(pointHitbox)) {
             startGame = true;
             System.out.println("Start Game");
         }
-        if(pointHitbox.intersects(asteroid1.hitbox)){
-            asteroid1.isAlive = false;
-            System.out.println("Asteroid 1 has been destroyed");
-        }
-        if(pointHitbox.intersects(asteroid2.hitbox)){
-            asteroid2.isAlive = false;
-            System.out.println("Asteroid 2 has been destroyed");
-        }
+        for (int b = 0; b < asteroids.length; b++) {
+            if (pointHitbox.intersects(asteroids[b].hitbox)) {
+                asteroids[b].isAlive = false;
+                System.out.println("Asteroid has been destroyed");
+            }
 
+            if (pointHitbox.intersects(asteroid1.hitbox)) {
+
+                asteroid1.isAlive = false;
+                System.out.println("Asteroid 1 has been destroyed");
+            }
+            if (pointHitbox.intersects(asteroid2.hitbox)) {
+                asteroid2.isAlive = false;
+                System.out.println("Asteroid 2 has been destroyed");
+            }
+
+        }
     }
+
 
     @Override
     public void mouseReleased(MouseEvent e) {
